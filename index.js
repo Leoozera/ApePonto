@@ -28,8 +28,7 @@ var arrayCheck = [];
 
 async function checarHorario() {
     let horario = new Date().toLocaleTimeString(); 
-    console.log(horario)
-    if(horario.startsWith('11') && horario.includes('PM')) {
+    if(horario.startsWith('11') && horario.includes('AM')) {
         enviarMensagem("entrada");
     }   
 
