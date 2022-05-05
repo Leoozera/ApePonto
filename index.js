@@ -8,7 +8,7 @@ const msgPonto = new MessageEmbed()
     .setColor('#FEE250')
     .setThumbnail('https://apepe.com/wp-content/uploads/elementor/thumbs/logo-branco-apepe-pg9re5qxfzspc9e6cptxrx077il0ojis9gg4d08si8.png')
     .setFooter({text: "Apepê - Funcionários", iconURL: "https://media.discordapp.net/attachments/804350503445987370/963433910627336282/02_09_KENJI_-_SKWIZ_LAB.jpg?width=560&height=659"})
-    .addFields({ name: 'Bater ponto no aplicativo', value: 'Não se esquecam' })
+    .addFields({ name: 'Bater ponto no aplicativo', value: 'Não se esqueçam' })
     .setTimestamp()
 
 client.login('OTcxNTA2ODQ1MzgwMzg2ODQ2.YnLgQQ.UfHRqrdeZqSiw65FBi8JLdWWoAg')
@@ -27,12 +27,12 @@ client.on('ready', async () => {
 var arrayCheck = []; 
 
 async function checarHorario() {
-    let horario = new Date().toLocaleTimeString(); 
-    if(horario.startsWith('11') && horario.includes('AM')) {
+    let horario = new Date().toLocaleTimeString() - 5; 
+    if(horario.startsWith('9') && horario.includes('AM')) {
         enviarMensagem("entrada");
     }   
 
-    if(horario.startsWith('18')) {
+    if(horario.startsWith('18') && horario.includes('PM')) {
         enviarMensagem("saida");
     }
 }
