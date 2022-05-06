@@ -28,7 +28,7 @@ const listen = (client) => {
             url: "https://www.youtube.com/bicicleta_com_rodinha"
         });
 
-        executeAt('4 13,18 * * *', async () => {
+        executeAt('10 13,18 * * *', async () => {
             try {
                 await clearChat(await getChannelByCache());
                 await clearArray(employeesData)
