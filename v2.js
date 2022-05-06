@@ -28,7 +28,7 @@ const listen = (client) => {
             url: "https://www.youtube.com/bicicleta_com_rodinha"
         });
 
-        executeAt('29 13,18 * * *', async () => {
+        executeAt('33 13,18 * * *', async () => {
             try {
                 await clearChat(await getChannelByCache());
                 await clearArray(employeesData)
@@ -43,8 +43,6 @@ const listen = (client) => {
             } catch (error) {
                 console.log(error);
             }
-        }, {
-            timezone: "America/Sao_Paulo"
         });
     };
 
@@ -53,7 +51,7 @@ const listen = (client) => {
 
 const utils = {
     employeesData: [],
-    executeAt: (cronNotation, cb) => schedule(cronNotation, cb),
+    executeAt: (cronNotation, cb) => schedule(cronNotation, cb, {timezone: "Americano/Sao_Paulo"}),
     embedPattern: new MessageEmbed().setColor('#FEE250').setThumbnail('https://apepe.com/wp-content/uploads/elementor/thumbs/logo-branco-apepe-pg9re5qxfzspc9e6cptxrx077il0ojis9gg4d08si8.png').setFooter({ text: "Apepê - Funcionários", iconURL: "https://media.discordapp.net/attachments/804350503445987370/963433910627336282/02_09_KENJI_-_SKWIZ_LAB.jpg?width=560&height=659" }).addFields({ name: 'Bater ponto no aplicativo', value: '‎' }).setTimestamp(),
     employees: ["971506845380386846", "323501959560691712", "307687975993606146", "572137293054214165", "463821733431083018", "487082466977251348", "331123567863529472"]
 }
