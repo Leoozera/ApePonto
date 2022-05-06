@@ -28,7 +28,7 @@ const listen = (client) => {
             url: "https://www.youtube.com/bicicleta_com_rodinha"
         });
 
-        executeAt('14 13,18 * * *', async () => {
+        executeAt('19 13,18 * * *', async () => {
             try {
                 await clearChat(await getChannelByCache());
                 await clearArray(employeesData)
@@ -43,7 +43,10 @@ const listen = (client) => {
             } catch (error) {
                 console.log(error);
             }
-        });
+        }, {
+                scheduled: true,
+                timezone: "America/Sao_Paulo"
+            });
     };
     client.on('ready', handler);
 };
@@ -82,7 +85,7 @@ const getClientActions = (client) => ({
     },
     pingEmployees: async (employees, reactionUsersMap, channel) => {
         const arrayDifference = await employees.filter(employee => !reactionUsersMap.includes(employee));
-        
+
         arrayDifference.forEach(employee => {
             channel.send(`<@${employee}> - Não relatou se bateu o ponto`)
         })
