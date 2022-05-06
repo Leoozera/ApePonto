@@ -12,7 +12,7 @@ const main = async () => {
 
 const initializeApp = async () => {
     const client = new Client({ intents: [Intents.FLAGS.GUILDS] })
-    client.login(process.env.TOKEN); // Tirei o await por problema de demora para logar - muitas vezes nao logando
+    client.login(process.env.TOKEN); 
     return client;
 };
 
@@ -28,7 +28,7 @@ const listen = (client) => {
             url: "https://www.youtube.com/bicicleta_com_rodinha"
         });
 
-        executeAt('35 13,18 * * *', async () => {
+        executeAt('0 9,15 * * *', async () => {
             try {
                 await clearChat(await getChannelByCache());
                 await clearArray(employeesData)
@@ -38,7 +38,7 @@ const listen = (client) => {
                 setTimeout(async () => {
                     await checkEmployees(getChannelByCache(), message.id, employeesData);
                     await pingEmployees(employees, employeesData, getChannelByCache());
-                }, 5000)
+                }, 900000) // 15 minutos
 
             } catch (error) {
                 console.log(error);
@@ -57,6 +57,7 @@ const utils = {
 }
 
 const getClientActions = (client) => ({
+
     getChannelByCache: () => {
         return client.channels.cache.get(process.env.CHANNEL_ID);
     },
