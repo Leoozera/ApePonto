@@ -1,5 +1,4 @@
 const {Client, Intents, MessageEmbed} = require('discord.js');
-const { object } = require('webidl-conversions');
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] })
 const funcionarios = ["971506845380386846", "323501959560691712", "307687975993606146", "572137293054214165", "463821733431083018", "487082466977251348", "331123567863529472"]
 const canalID = "971505982922432554";
@@ -16,6 +15,11 @@ client.login('OTcxNTA2ODQ1MzgwMzg2ODQ2.YnLgQQ.UfHRqrdeZqSiw65FBi8JLdWWoAg')
 client.on('ready', async () => {
     console.log('*BOT Iniciado*');
 
+    client.user.setActivity("O Antonny ja reclamou do ar condicionado hoje?", {
+        type: "STREAMING",
+        url: "https://www.youtube.com/bicicleta_com_rodinha"
+      });
+
     let canal = client.channels.cache.get(canalID)
     await canal.bulkDelete(100)
 
@@ -27,12 +31,14 @@ client.on('ready', async () => {
 var arrayCheck = []; 
 
 async function checarHorario() {
-    let horario = new Date().toLocaleTimeString() - 5; 
-    if(horario.startsWith('9') && horario.includes('AM')) {
+    let horario = new Date().toLocaleTimeString(); 
+    // console.log(horario)
+    if(horario.startsWith('19')) {
         enviarMensagem("entrada");
+
     }   
 
-    if(horario.startsWith('18') && horario.includes('PM')) {
+    if(horario.startsWith('18') /*&& horario.includes('PM')*/) {
         enviarMensagem("saida");
     }
 }
@@ -72,7 +78,7 @@ async function mencionarFuncionarios(usersMap) {
     let diferenca = await funcionarios.filter(filtro => !usersMap.includes(filtro))
     
     diferenca.forEach(funcionario => {
-        client.channels.cache.get(canalID).send(`<${funcionario}>`)
+        client.channels.cache.get(canalID).send(`<@${funcionario}> - Não relatou se bateu o ponto`)
     })
 }
 
