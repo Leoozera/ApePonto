@@ -28,7 +28,7 @@ const listen = (client) => {
             url: "https://www.youtube.com/bicicleta_com_rodinha"
         });
 
-        executeAt('19 13,18 * * *', async () => {
+        executeAt('29 13,18 * * *', async () => {
             try {
                 await clearChat(await getChannelByCache());
                 await clearArray(employeesData)
@@ -44,10 +44,10 @@ const listen = (client) => {
                 console.log(error);
             }
         }, {
-                scheduled: true,
-                timezone: "America/Sao_Paulo"
-            });
+            timezone: "America/Sao_Paulo"
+        });
     };
+
     client.on('ready', handler);
 };
 
