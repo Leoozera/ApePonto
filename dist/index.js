@@ -7,7 +7,7 @@ const msgPonto = new MessageEmbed()
     .setColor('#FEE250')
     .setThumbnail('https://apepe.com/wp-content/uploads/elementor/thumbs/logo-branco-apepe-pg9re5qxfzspc9e6cptxrx077il0ojis9gg4d08si8.png')
     .setFooter({text: "Apepê - Funcionários", iconURL: "https://media.discordapp.net/attachments/804350503445987370/963433910627336282/02_09_KENJI_-_SKWIZ_LAB.jpg?width=560&height=659"})
-    .addFields({ name: 'Bater ponto no aplicativo', value: 'Não se esqueçam' })
+    .addFields({ name: 'Ponto - Aviso', value: `` })
     .setTimestamp()
 
 client.login('OTcxNTA2ODQ1MzgwMzg2ODQ2.YnLgQQ.UfHRqrdeZqSiw65FBi8JLdWWoAg')
